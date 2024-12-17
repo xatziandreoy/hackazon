@@ -58,6 +58,59 @@ class RESTWebTestCase extends WebTestCase
         return json_decode(''.$this->getResponse()->getContent(), true);
     }
 
+     // Test 1: Verify if secret file content is loaded properly
+    public function testSecretFileContent()
+    {
+        $this->assertNotEmpty(
+            $this->secretContent, 
+            "Secret file content should not be empty."
+        );
+    }
+
+    // Test 2: Verify that token is fetched correctly
+    public function testFetchToken()
+    {
+        $this->fetchToken();
+        $this->assertNotEmpty(
+            $this->token, 
+            "Token should not be empty after fetchToken() call."
+        );
+    }
+
+    // Test 3: Test API request functionality
+    public function testApiRequest()
+    {
+        $response = $this->apiRequest('GET', '/api/test');
+        $this->assertIsArray(
+            $response, 
+            "API response should be a valid JSON array."
+        );
+
+        $this->assertArrayHasKey(
+            'status', 
+            $response, 
+            "Response array must contain a 'status' key."
+        );
+    }
+
+    // Test 4: Test XML payload generation
+    public function testXMLExternalEntityPayload()
+    {
+        $payload = $this->getXMLExternalEntityPayload();
+        $this->assertStringContainsString(
+            "<!DOCTYPE roottag", 
+            $payload, 
+            "Payload should contain a valid XML DOCTYPE."
+        );
+
+        $this->assertStringContainsString(
+            "file:///", 
+            $payload, 
+            "Payload should reference a file URL."
+        );
+    }
+
+
     /**
      * @return string
      */
