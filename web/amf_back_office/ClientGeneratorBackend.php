@@ -43,7 +43,8 @@ $generator->generate($services, $config->resolveAmfphpEntryPointUrl(), $targetFo
 $urlSuffix = $generator->getTestUrlSuffix();
 
 if ($urlSuffix !== false) {
-    echo '<a target="_blank" href="' . $genRootRelativeUrl . $newFolderName . '/' . $urlSuffix . '"> try your generated project here</a><br/><br/>';
+header('Content-Type: text/plain');
+echo htmlspecialchars($input, ENT_QUOTES, 'UTF-8');    
 }
 if (Amfphp_BackOffice_ClientGenerator_Util::serverCanZip()) {
     $zipFileName = "$newFolderName.zip";

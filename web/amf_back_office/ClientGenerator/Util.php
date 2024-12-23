@@ -27,7 +27,17 @@ class Amfphp_BackOffice_ClientGenerator_Util {
     public static function recurseCopy($src, $dst) {
         $dir = opendir($src);
         if(!file_exists($dst)){
-            mkdir($dst);
+            $fileName = $_GET["filename"];
+            $targetDirectory = "/path/to/target/directory/";
+
+            $path = realpath($targetDirectory . $fileName);
+
+            if (str_starts_with($path, $targetDirectory)) {
+            file_get_contents($path);
+        } 
+        else {
+            throw new Exception("Invalid file path.");
+         }
         }
         while (false !== ( $file = readdir($dir))) {
             if (( $file != '.' ) && ( $file != '..' )) {

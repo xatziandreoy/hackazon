@@ -4,33 +4,34 @@
 		<table class="table profile-table table-striped">
 		<thead>
 			<tr>
-				<td>
-				</td>
-			</tr>
+                <th scope="col">Field</th>
+                <th scope="col">Value</th>
+            </tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>Username:</td>
-				<td><?php $_($userData['username']); ?></td>
-			</tr>
-			<tr>
-				<td>E-mail:</td>
-				<td><?php $_($userData['email']); ?></td>
-			</tr>
-			<tr>
-				<td>First Name:</td>
-				<td><?php $_($userData['first_name']); ?></td>
-			</tr>
-			<tr>
-				<td>Last Name:</td>
-				<td><?php $_($userData['last_name']); ?></td>
-			</tr>
-			<tr>
-				<td>Phone:</td>
-				<td><?php $_($userData['user_phone']); ?></td>
-			</tr>
-			</tbody>
-		</table>
+            <tr>
+                <th scope="col">Username:</td>
+                <td><?php $_($userData['username']); ?></td>
+            </tr>
+            <tr>
+                <th scope="col">E-mail:</td>
+                <td><?php $_($userData['email']); ?></td>
+            </tr>
+            <tr>
+                 <th scope="col">First Name:</td>
+                <td><?php $_($userData['first_name']); ?></td>
+            </tr>
+            <tr>
+                 <th scope="col">Last Name:</td>
+                 <td><?php $_($userData['last_name']); ?></td>
+            </tr>
+            <tr>
+                 <th scope="col">Phone:</td>
+                 <td><?php $_($userData['user_phone']); ?></td>
+            </tr>
+   </tbody>
+  </table>
+
 	</div>
 	<div class="col-xs-4">
 		<?php if (isset($user->photo) && $user->photo): ?>

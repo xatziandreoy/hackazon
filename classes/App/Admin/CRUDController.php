@@ -47,10 +47,23 @@ class CRUDController extends Controller
 
     public $editView = 'crud/edit';
 
-    /**
-     * @var array|null
-     */
-    protected $preparedEditFields;
+    protected function prepareListFields()
+    {
+        $listFields = $this->getListFields();
+        $result = [];
+
+        foreach ($listFields as $field => &$data) {
+           
+            if (is_numeric($field) && is_string($data)) {
+                $result[$data] = [];
+                continue;
+            }
+
+            $result[$field] = $data;
+        }
+
+        return $result;
+    }
 
     public function before()
     {

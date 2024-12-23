@@ -63,11 +63,14 @@ class DBSettingsStep extends AbstractStep
         }
 
         try {
-            $dsn = "mysql:host={$this->host};port={$this->port}";
-            // Try to connect
+            $dsn = "mysql:host={$this->host};port={$this->port}";                       
+              // Try to connect
             $conn = new \PDO($dsn, $this->user, $this->password);
 
-            $stmt = $conn->query('USE `'.$this->db.'`');
+             // Prepare statements for execution.
+            $stmt = $conn->prepare('USE :dbname');
+            $stmt->bindParam(':dbname', $this->db, PDO::PARAM_STR);
+            $stmt->execute();
 
             if (!$stmt || $stmt->errorCode() > 0) {
                 if ($this->createIfNotExists) {

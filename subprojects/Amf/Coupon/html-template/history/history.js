@@ -429,7 +429,7 @@ BrowserHistory = (function() {
         }
     }
 
-    var _initialize = function () {
+    var _initialize = function (src) {
         
         browserHasHashChange = ("onhashchange" in document.body);
         

@@ -25,7 +25,7 @@
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade in active latest-orders" id="my-orders">
-                            <?php include __DIR__.'/_order_list.php'; ?>
+                            <?php include_once 'config.php'; // 1 load ?>
                             <p class="text-right">
                                 <a href="/account/orders" id="order_link" class="btn btn-primary ladda-button" data-style="expand-right"><span class="ladda-label">Go to my orders</span></a>
                             </p>
